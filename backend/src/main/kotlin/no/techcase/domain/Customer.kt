@@ -8,7 +8,7 @@ import javax.persistence.Id
 
 @Suppress("unused")
 @Entity
-class Customer(
+data class Customer(
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -22,5 +22,5 @@ class Customer(
     @Column(unique = true, nullable = false)
     val phoneNumber: String,
     @Column(unique = true, nullable = false)
-    val emailAddress: String,
+    val emailAddress: String
 )

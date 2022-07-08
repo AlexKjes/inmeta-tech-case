@@ -21,24 +21,31 @@ class TestDataSeeder(
     @Bean
     fun seedTestData() {
 
-        val customer1 = Customer(
+        for (i in 1..10) {
+            createOrder(i)
+        }
+
+    }
+
+    private fun createOrder(id: Int) {
+
+        val customer = Customer(
             uuid = null,
-            name = "Testy Test",
-            emailAddress = "mail@address.tld",
-            phoneNumber = "3443545"
+            name = "Test customer $id",
+            emailAddress = "customer$id@address.tld",
+            phoneNumber = "3443545$id"
         )
 
         val order = IncomingOrder(
             uuid = null,
-            customer =  customer1,
+            customer =  customer,
             executionDate = LocalDateTime.now(),
             serviceTypes = listOf(ServiceType.PACKING, ServiceType.MOVING),
-            toAddress = Address("Test Street 1B", "1881", "Oslo"),
-            fromAddress = Address("Test Street 42B", "1881", "Oslo"),
-            note = "this is a test order"
+            toAddress = Address("Test Street $id", "1881", "Oslo"),
+            fromAddress = Address("Test Street $id", "1881", "Oslo"),
+            note = "this is test order number $id"
         )
-        customerRestRepository.save(customer1)
+        customerRestRepository.save(customer)
         incomingOrderRepository.save(order)
-
     }
 }

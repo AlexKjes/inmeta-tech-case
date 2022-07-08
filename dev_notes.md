@@ -12,7 +12,15 @@
 
 ### Adding RestRepositories 
 
- * Adding repository for customer 
+ * Adding repository for customer
+   * Adding filtering by name/email/address
  * Adding repository for order
+   * 
 
 ### Adding validation
+
+
+## Frontend
+
+ * Create react app
+ * 

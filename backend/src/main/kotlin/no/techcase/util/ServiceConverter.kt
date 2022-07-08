@@ -8,11 +8,7 @@ import javax.persistence.Converter
 class ServiceConverter : AttributeConverter<List<ServiceType>, String> {
 
     override fun convertToDatabaseColumn(attribute: List<ServiceType>?): String {
-        return if (attribute == null) {
-            ""
-        } else {
-            attribute.joinToString()
-        }
+        return attribute?.joinToString() ?: ""
     }
 
     override fun convertToEntityAttribute(dbData: String?): List<ServiceType> {
